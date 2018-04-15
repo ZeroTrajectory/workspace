@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\project_test.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{EA18C5E5-D41E-40B7-8C82-FC11CEEF6C81}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\project_test.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\project_testEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{D0B59A83-B27D-4330-AB7B-440DFF8FBEDA}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\project_test">
+      <UniqueIdentifier>{ECDE4C6D-D4F0-4319-8632-F4A9CB452784}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\project_test\project_test.Build.cs">
+      <Filter>Source\project_test</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\project_test\project_test.cpp">
+      <Filter>Source\project_test</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\project_test\project_test.h">
+      <Filter>Source\project_test</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\project_test\project_testGameModeBase.cpp">
+      <Filter>Source\project_test</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\project_test\project_testGameModeBase.h">
+      <Filter>Source\project_test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source\project_test\base">
+      <UniqueIdentifier>{75999fbf-7b46-4790-b843-374bef0a5b8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\project_test\base\FloatingActor.h">
+      <Filter>Source\project_test\base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\project_test\base\FloatingActor.cpp">
+      <Filter>Source\project_test\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

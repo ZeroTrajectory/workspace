@@ -6,6 +6,6 @@ public class QuestionConfig
 {
     public int id;
     public string question;
-    public string answer;
+    public string[] answer;
     public int trueNum;
 }

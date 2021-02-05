@@ -1,5 +1,7 @@
 /Temp
 /Packages
 /Library
-/Assembly-CSharp-firstpass.csproj
-/project_214.sln
+/obj
+Assembly-CSharp-firstpass.csproj
+Assembly-CSharp.csproj
+project_214.sln

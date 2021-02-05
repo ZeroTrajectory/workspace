@@ -42,7 +42,8 @@ public class ConfigMgr
             config.id = Convert.ToInt32(strSplit[0]);
             config.question = strSplit[1];
             config.answer = strSplit[2].Split('|');
-            config.trueNum = Convert.ToInt32(strSplit[3]);
+            config.trueAnswer = strSplit[3];
+            config.note = Convert.ToInt32(strSplit[4]);
             m_questionList.Add(config);
         }
     }

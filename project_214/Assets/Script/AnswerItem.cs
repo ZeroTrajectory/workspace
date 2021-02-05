@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,14 +11,16 @@ public class AnswerItem : MonoBehaviour
     private Text m_txtSelect;
     
     private bool m_isTrue = false;
+    private Action m_callback = null;
     private void Start() 
     {
         m_btnSelect.onClick.AddListener(OnClick);
     }
-    public void SetData(string select,bool isTrue)
+    public void SetData(string select,bool isTrue,Action callback)
     {
         m_txtSelect.text = select;
         m_isTrue = isTrue;
+        m_callback = callback;
     }
 
     private void OnClick()
@@ -34,11 +37,11 @@ public class AnswerItem : MonoBehaviour
 
     private void OnClickTrue()
     {
-
+        m_callback?.Invoke();
     }
 
     private void OnClickFalse()
     {
-
+        Debug.Log("anwser error");
     }
 }

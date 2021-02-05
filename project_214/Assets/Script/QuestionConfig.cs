@@ -7,5 +7,6 @@ public class QuestionConfig
     public int id;
     public string question;
     public string[] answer;
-    public int trueNum;
+    public string trueAnswer;
+    public int note;
 }

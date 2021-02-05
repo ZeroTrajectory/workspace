@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class QuestionForm : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        Init();
+    }
+
+    private void Init()
+    {
+        //配置初始化
         ConfigMgr.GetInstance().InitConfig();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

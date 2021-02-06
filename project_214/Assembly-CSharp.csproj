@@ -55,8 +55,11 @@
   <ItemGroup>
      <Compile Include="Assets\Script\AnswerItem.cs" />
      <Compile Include="Assets\Script\ConfigMgr.cs" />
+     <Compile Include="Assets\Script\MainForm.cs" />
+     <Compile Include="Assets\Script\PianoPanel.cs" />
      <Compile Include="Assets\Script\QuestionConfig.cs" />
-     <Compile Include="Assets\Script\QuestionForm.cs" />
+     <Compile Include="Assets\Script\QuestionPanel.cs" />
+     <Compile Include="Assets\Script\ResultPanel.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/workspace/project_214/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

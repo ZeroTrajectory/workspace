@@ -47,4 +47,24 @@ public class ConfigMgr
             m_questionList.Add(config);
         }
     }
+
+    public int GetQuestionCount()
+    {
+        if(m_questionList == null)
+        {
+            Debug.LogError("question config not init!");
+            return 0;
+        }
+        return m_questionList.Count;
+    }
+
+    public QuestionConfig GetQuestionConfig(int index)
+    {
+        if(m_questionList == null)
+        {
+            Debug.LogError("question config not init!");
+            return null;
+        }
+        return m_questionList[index];
+    }
 }

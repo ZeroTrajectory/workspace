@@ -11,12 +11,12 @@ public class AnswerItem : MonoBehaviour
     private Text m_txtSelect;
     
     private bool m_isTrue = false;
-    private Action m_callback = null;
+    private Action<bool> m_callback = null;
     private void Start() 
     {
         m_btnSelect.onClick.AddListener(OnClick);
     }
-    public void SetData(string select,bool isTrue,Action callback)
+    public void SetData(string select,bool isTrue,Action<bool> callback)
     {
         m_txtSelect.text = select;
         m_isTrue = isTrue;
@@ -33,11 +33,12 @@ public class AnswerItem : MonoBehaviour
         {
             OnClickFalse();
         }
+        m_callback?.Invoke(m_isTrue);
     }
 
     private void OnClickTrue()
     {
-        m_callback?.Invoke();
+        
     }
 
     private void OnClickFalse()

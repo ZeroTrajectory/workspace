@@ -8,5 +8,5 @@ public class QuestionConfig
     public string question;
     public string[] answer;
     public string trueAnswer;
-    public int note;
+    public string note;
 }

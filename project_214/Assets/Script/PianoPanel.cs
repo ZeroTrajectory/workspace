@@ -1,18 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PianoPanel : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{   
+    [SerializeField]
+    // private Piano
+
+    private Action<MainForm.Status> m_callback;
+    private List<PianoKeyItem> m_whiteList = new List<PianoKeyItem>();
+    private List<PianoKeyItem> m_blackList = new List<PianoKeyItem>();
+    public void Init(Action<MainForm.Status> callback)
     {
-        
+        m_callback = callback;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitPiano()
     {
-        
+
     }
 }

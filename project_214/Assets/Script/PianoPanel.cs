@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class PianoPanel : MonoBehaviour
 {   
     [SerializeField]
-    // private Piano
+    private PianoKeyItem m_whiteKeyTemp;
+    [SerializeField]
+    private PianoKeyItem m_blackKeyTemp;
 
     private Action<MainForm.Status> m_callback;
     private List<PianoKeyItem> m_whiteList = new List<PianoKeyItem>();

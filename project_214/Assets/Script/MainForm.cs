@@ -22,7 +22,9 @@ public class MainForm : MonoBehaviour
     {
         //配置初始化
         ConfigMgr.GetInstance().InitConfig();
-        
+        m_questionPanel.Init(OnStatusOver);
+        m_pianoPanel.Init(OnStatusOver);
+        m_resultPanel.Init(OnStatusOver);
         SwitchStatus(Status.Question);
     }
 
@@ -53,6 +55,11 @@ public class MainForm : MonoBehaviour
     }
 
     private void ShowResult()
+    {
+
+    }
+
+    private void OnStatusOver(Status status)
     {
 
     }

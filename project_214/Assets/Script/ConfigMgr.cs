@@ -33,11 +33,11 @@ public class ConfigMgr
         }
         m_questionList.Clear();
         var configText = Resources.Load("Config/Question") as TextAsset;
-        var streamReader = new StreamReader(configText.text);
+        var stringReader = new StringReader(configText.text);
         string line = string.Empty;
         while(true)
         {
-            line = streamReader.ReadLine();
+            line = stringReader.ReadLine();
             if(line == null) break;
             var strSplit = line.Split(',');
             var config = new QuestionConfig();
@@ -58,11 +58,11 @@ public class ConfigMgr
         }
         m_pianoList.Clear();
         var configText = Resources.Load("Config/Piano") as TextAsset;
-        var streamReader = new StreamReader(configText.text);
+        var stringReader = new StringReader(configText.text);
         string line = string.Empty;
         while(true)
         {
-            line = streamReader.ReadLine();
+            line = stringReader.ReadLine();
             if(line == null) break;
             var strSplit = line.Split(',');
             var config = new PianoConfig();

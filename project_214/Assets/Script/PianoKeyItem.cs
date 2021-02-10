@@ -24,16 +24,16 @@ public class PianoKeyItem : MonoBehaviour
     {
         if(m_config.type == "white")
         {
-            transform.localPosition = new Vector3(90 * m_config.index,0,0);
+            transform.localPosition = new Vector3(90 * m_config.index - 495,0,0);
         }
         else
         {
-            transform.localPosition = new Vector3(90 + 90 * m_config.index,0,0);
+            transform.localPosition = new Vector3(45 + 90 * m_config.index - 495,0,0);
         }
     }
 
     private void OnPlaySound()
     {
-
+        AudioManager.GetInstance().PlaySound(m_config.note);
     }
 }

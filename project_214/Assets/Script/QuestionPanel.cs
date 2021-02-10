@@ -17,7 +17,7 @@ public class QuestionPanel : MonoBehaviour
     private List<AnswerItem> m_answerList = new List<AnswerItem>();
     private Action<MainForm.Status> m_callback;
 
-    private void Init(Action<MainForm.Status> callback)
+    public void Init(Action<MainForm.Status> callback)
     {
         m_callback = callback;
         m_maxQuestCount = ConfigMgr.GetInstance().GetQuestionCount();
@@ -72,6 +72,11 @@ public class QuestionPanel : MonoBehaviour
         {
             NextQuestion();
         }
+    }
+
+    public void Clear()
+    {
+
     }
 
     

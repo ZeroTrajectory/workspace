@@ -1,18 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ResultPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Init(Action<MainForm.Status> callback)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Clear()
     {
-        
+
     }
 }

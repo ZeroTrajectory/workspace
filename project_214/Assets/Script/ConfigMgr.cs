@@ -93,6 +93,26 @@ public class ConfigMgr
         return m_questionList[index];
     }
 
+    public List<string> GetTrueAnswerList()
+    {
+        var trueAnswerList = new List<string>();
+        for(int i = 0; i < m_questionList.Count; i++)
+        {
+            trueAnswerList.Add(m_questionList[i].trueAnswer);
+        }
+        return trueAnswerList;
+    }
+
+    public List<string> GetNoteList()
+    {
+        var noteList = new List<string>();
+        for(int i = 0; i < m_questionList.Count; i++)
+        {
+            noteList.Add(m_questionList[i].note);
+        }
+        return noteList;
+    }
+
     public List<PianoConfig> GetPianoConfigList(string type)
     {
         if(m_pianoList == null)

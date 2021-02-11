@@ -57,6 +57,7 @@
      <Compile Include="Assets\Script\AudioManager.cs" />
      <Compile Include="Assets\Script\ConfigMgr.cs" />
      <Compile Include="Assets\Script\MainForm.cs" />
+     <Compile Include="Assets\Script\NoteItem.cs" />
      <Compile Include="Assets\Script\PianoConfig.cs" />
      <Compile Include="Assets\Script\PianoKeyItem.cs" />
      <Compile Include="Assets\Script\PianoPanel.cs" />

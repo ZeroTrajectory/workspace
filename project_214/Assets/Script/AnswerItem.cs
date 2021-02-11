@@ -16,11 +16,12 @@ public class AnswerItem : MonoBehaviour
     {
         m_btnSelect.onClick.AddListener(OnClick);
     }
-    public void SetData(string select,bool isTrue,Action<bool> callback)
+    public void SetData(int index, string select,bool isTrue,Action<bool> callback)
     {
         m_txtSelect.text = select;
         m_isTrue = isTrue;
         m_callback = callback;
+        transform.localPosition = new Vector3(-300 + index * 200,0,0);
     }
 
     private void OnClick()

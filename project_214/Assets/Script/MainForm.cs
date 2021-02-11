@@ -46,21 +46,27 @@ public class MainForm : MonoBehaviour
 
     private void ShowQuestion()
     {
-
+        m_questionPanel.gameObject.SetActive(true);
+        m_pianoPanel.gameObject.SetActive(false);
+        m_resultPanel.gameObject.SetActive(false);
     }
 
     private void ShowPiano()
     {
-
+        m_questionPanel.gameObject.SetActive(false);
+        m_pianoPanel.gameObject.SetActive(true);
+        m_resultPanel.gameObject.SetActive(false);
     }
 
     private void ShowResult()
     {
-
+        m_questionPanel.gameObject.SetActive(false);
+        m_pianoPanel.gameObject.SetActive(false);
+        m_resultPanel.gameObject.SetActive(true);
     }
 
     private void OnStatusOver(Status status)
     {
-
+        SwitchStatus(status);
     }
 }

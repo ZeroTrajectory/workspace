@@ -60,7 +60,7 @@ public class QuestionPanel : MonoBehaviour
                 m_answerList.Add(anwser);
             }
             bool isTrue = config.answer[i] == config.trueAnswer;
-            m_answerList[i].SetData(config.answer[i],isTrue,(o) => OnClickAnswer(o));
+            m_answerList[i].SetData(i,config.answer[i],isTrue,(o) => OnClickAnswer(o));
             m_answerList[i].gameObject.SetActive(true);
         }
         m_txtDesc.text = config.question;

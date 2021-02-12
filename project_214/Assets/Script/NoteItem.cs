@@ -7,10 +7,12 @@ public class NoteItem : MonoBehaviour
     [SerializeField]
     private Text m_txtNote;
 
-    public void SetData(int index, string note)
+    private string m_note = string.Empty;
+
+    public void SetData(string note)
     {
-        m_txtNote.text = note;
-        transform.localPosition = new Vector3(-350 + index * 50,0,0);
+        m_note = note;
+        // transform.localPosition = new Vector3(-350 + index * 50,0,0);
         SetPass(false);
     }
 
@@ -18,11 +20,16 @@ public class NoteItem : MonoBehaviour
     {
         if(isPass)
         {
-            m_txtNote.color = new Color(255,0,0);
+            m_txtNote.color = new Color(0,255,0);
         }
         else
         {
-            m_txtNote.color = new Color(255,255,255);
+            m_txtNote.color = new Color(255,0,0);
         }
+    }
+
+    public string GetNote()
+    {
+        return m_note;
     }
 }

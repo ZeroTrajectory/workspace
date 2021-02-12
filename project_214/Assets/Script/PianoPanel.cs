@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PianoPanel : MonoBehaviour
 {   
@@ -15,22 +16,26 @@ public class PianoPanel : MonoBehaviour
     [SerializeField]
     private Transform m_traBlackRoot;
     [SerializeField]
+    private Text m_txtAllAnswer;
+    [SerializeField]
     private Transform m_traNoteRoot;
     [SerializeField]
-    private NoteItem m_NoteItemTemp;
+    private Transform m_traNoteLineRoot;
+    [SerializeField]
+    private Transform m_traKeyboard;
+    [SerializeField]
+    private List<NoteItem> m_noteItemList;
 
     private Action<MainForm.Status> m_callback;
     private List<PianoKeyItem> m_whiteList = new List<PianoKeyItem>();
     private List<PianoKeyItem> m_blackList = new List<PianoKeyItem>();
     private int m_curIndex = 0;
-    private List<string> m_noteList = null;
-    private List<NoteItem> m_noteItemList = new List<NoteItem>();
+    // private List<string> m_noteList = null;
     public void Init(Action<MainForm.Status> callback)
     {
         m_callback = callback;
         InitPiano(m_whiteList,m_traWhiteRoot,m_whiteKeyTemp,"white");
         InitPiano(m_blackList,m_traBlackRoot,m_blackKeyTemp,"black");
-        InitNoteList();
         m_curIndex = 0;
     }
 
@@ -55,42 +60,55 @@ public class PianoPanel : MonoBehaviour
         }
     }
 
-    private void InitNoteList()
+    public void ShowNoteList()
     {
-        m_noteList = ConfigMgr.GetInstance().GetNoteList();
-        for(int i = 0; i < m_noteItemList.Count; i++)
-        {
-            m_noteItemList[i].gameObject.SetActive(false);
-        }
-        var trueAnswerList = ConfigMgr.GetInstance().GetTrueAnswerList();
-        for(int i = 0; i < trueAnswerList.Count; i++)
-        {
-            if(i >= m_noteItemList.Count)
+       if(m_noteItemList == null)
+       {
+           return;
+       }
+       AudioManager.GetInstance().DispearMusic();
+       var noteList = ConfigMgr.GetInstance().GetNoteList();
+       m_txtAllAnswer.GetComponent<CanvasGroup>().alpha = 0;
+       m_traNoteRoot.GetComponent<CanvasGroup>().alpha = 0;
+       m_traNoteLineRoot.GetComponent<CanvasGroup>().alpha = 0;
+       m_txtAllAnswer.GetComponent<CanvasGroup>().DOFade(1,3f);       
+       DOVirtual.DelayedCall(3f,() =>
+       {
+           m_traNoteRoot.GetComponent<CanvasGroup>().DOFade(1,2f);
+       });
+       DOVirtual.DelayedCall(6f,() =>
+       {
+            for(int i = 0; i < m_noteItemList.Count; i++)
             {
-                var obj = GameObject.Instantiate(m_NoteItemTemp.gameObject,m_traNoteRoot);
-                obj.transform.localScale = Vector3.one;
-                var item = obj.transform.GetComponent<NoteItem>();
-                m_noteItemList.Add(item);
+                m_noteItemList[i].SetData(noteList[i]);
+                m_noteItemList[i].transform.DOLocalMove(new Vector3(-150 + i * 25,0,0),2f);
             }
-            m_noteItemList[i].SetData(i,trueAnswerList[i]);
-            m_noteItemList[i].gameObject.SetActive(true);
-        }
+       });
+       DOVirtual.DelayedCall(8f,() =>
+       {
+           m_traNoteLineRoot.GetComponent<CanvasGroup>().DOFade(1,2f);
+       });
+       DOVirtual.DelayedCall(7f,() =>
+       {
+           m_traKeyboard.transform.DOLocalMove(new Vector3(0,-180,0),3f);
+       });
+
     }
 
     private void OnClickPianoKey(string note)
     {
-        if(m_noteList == null)
+        if(m_noteItemList == null)
         {
             Debug.LogError("note list not init!");
             return;
         }
-        if(m_curIndex >= m_noteList.Count)
+        if(m_curIndex >= m_noteItemList.Count)
         {
-            AllKeyComplete();
+            // AllKeyComplete();
         }
         else
         {
-            if(m_noteList[m_curIndex] == note)
+            if(m_noteItemList[m_curIndex].GetNote() == note)
             {
                 ClickTrue();
             }
@@ -105,6 +123,10 @@ public class PianoPanel : MonoBehaviour
     {
         m_noteItemList[m_curIndex].SetPass(true);
         m_curIndex++;
+        if(m_curIndex >= m_noteItemList.Count)
+        {
+            AllKeyComplete();
+        }
     }
 
     private void ClickFalse()
@@ -119,6 +141,12 @@ public class PianoPanel : MonoBehaviour
     private void AllKeyComplete()
     {
         m_callback?.Invoke(MainForm.Status.Result);
+        AudioManager.GetInstance().PlayMusic("lemon",false);
+        m_traKeyboard.transform.DOLocalMove(new Vector3(0,-720,0),3f);
+        DOVirtual.DelayedCall(7f,() =>
+        {
+            AudioManager.GetInstance().PlayMusic("lemonfull",false);           
+        });
     }
 
     public void Clear()

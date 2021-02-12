@@ -286,6 +286,21 @@
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>E:/workspace/project_214/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>E:/workspace/project_214/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>E:/workspace/project_214/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>E:/workspace/project_214/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>E:/workspace/project_214/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>E:/workspace/project_214/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
  </Reference>

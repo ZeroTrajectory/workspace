@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 public class AnswerItem : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +11,7 @@ public class AnswerItem : MonoBehaviour
     [SerializeField]
     private Text m_txtSelect;
     
+    private int m_index = 0;
     private bool m_isTrue = false;
     private Action<bool> m_callback = null;
     private void Start() 
@@ -18,10 +20,11 @@ public class AnswerItem : MonoBehaviour
     }
     public void SetData(int index, string select,bool isTrue,Action<bool> callback)
     {
-        m_txtSelect.text = select;
+        m_index = index;
+        m_txtSelect.text = string.Format("{0}.{1}",SwitchIndexToABCD(),select);
         m_isTrue = isTrue;
         m_callback = callback;
-        transform.localPosition = new Vector3(-300 + index * 200,0,0);
+        transform.localPosition = new Vector3(-160 + (index % 2) * 320,50 - (index / 2) * 80 ,0);
     }
 
     private void OnClick()
@@ -44,6 +47,32 @@ public class AnswerItem : MonoBehaviour
 
     private void OnClickFalse()
     {
-        Debug.Log("anwser error");
+        // Debug.Log("anwser error");
+        var pos = transform.localPosition;
+        transform.DOMove(new Vector3(pos.x,pos.y-100,pos.z),0.5f);
+    }
+
+    private string SwitchIndexToABCD()
+    {
+        string str = string.Empty;
+        switch(m_index)
+        {
+            case 0:
+                str = "A";
+                break;
+            case 1:
+                str = "B";
+                break;
+            case 2:
+                str = "C";
+                break;
+            case 3:
+                str = "D";
+                break;
+            default:
+                str = "E";
+                break;
+        }
+        return str;
     }
 }

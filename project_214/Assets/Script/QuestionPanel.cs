@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using DG.Tweening;
 public class QuestionPanel : MonoBehaviour
 {
     [SerializeField]
@@ -45,6 +46,8 @@ public class QuestionPanel : MonoBehaviour
 
     private void RefreshQuestion()
     {
+        m_traAnswerRoot.GetComponent<CanvasGroup>().alpha = 0;
+        m_traAnswerRoot.GetComponent<CanvasGroup>().DOFade(1,2f);
         var config = ConfigMgr.GetInstance().GetQuestionConfig(m_curQuestIndex);
         for(int i = 0; i < m_answerList.Count; i++)
         {
@@ -63,14 +66,18 @@ public class QuestionPanel : MonoBehaviour
             m_answerList[i].SetData(i,config.answer[i],isTrue,(o) => OnClickAnswer(o));
             m_answerList[i].gameObject.SetActive(true);
         }
-        m_txtDesc.text = config.question;
+        m_txtDesc.text = string.Format(config.question,"__");
     }
 
     private void OnClickAnswer(bool isTrue)
     {
         if(isTrue)
         {
-            NextQuestion();
+            m_traAnswerRoot.GetComponent<CanvasGroup>().DOFade(0,2f);
+            DOVirtual.DelayedCall(2f,() =>
+            {
+                NextQuestion();
+            });         
         }
     }
 

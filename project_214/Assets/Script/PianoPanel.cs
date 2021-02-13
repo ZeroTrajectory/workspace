@@ -81,14 +81,14 @@ public class PianoPanel : MonoBehaviour
             for(int i = 0; i < m_noteItemList.Count; i++)
             {
                 m_noteItemList[i].SetData(noteList[i]);
-                m_noteItemList[i].transform.DOLocalMove(new Vector3(-150 + i * 25,0,0),2f);
+                m_noteItemList[i].transform.DOLocalMove(new Vector3(-150 + i * 25,0,0),3f);
             }
        });
-       DOVirtual.DelayedCall(8f,() =>
+       DOVirtual.DelayedCall(9f,() =>
        {
            m_traNoteLineRoot.GetComponent<CanvasGroup>().DOFade(1,2f);
        });
-       DOVirtual.DelayedCall(7f,() =>
+       DOVirtual.DelayedCall(8f,() =>
        {
            m_traKeyboard.transform.DOLocalMove(new Vector3(0,-180,0),3f);
        });

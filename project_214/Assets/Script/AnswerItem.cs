@@ -14,12 +14,14 @@ public class AnswerItem : MonoBehaviour
     private int m_index = 0;
     private bool m_isTrue = false;
     private Action<bool> m_callback = null;
+    private bool m_isClear = false;
     private void Start() 
     {
         m_btnSelect.onClick.AddListener(OnClick);
     }
     public void SetData(int index, string select,bool isTrue,Action<bool> callback)
     {
+        m_isClear = false;
         m_index = index;
         m_txtSelect.text = string.Format("{0}.{1}",SwitchIndexToABCD(),select);
         m_isTrue = isTrue;
@@ -29,8 +31,9 @@ public class AnswerItem : MonoBehaviour
 
     private void OnClick()
     {
+        if(m_isClear) return;
         if(m_isTrue)
-        {
+        {            
             OnClickTrue();
         }
         else
@@ -74,5 +77,10 @@ public class AnswerItem : MonoBehaviour
                 break;
         }
         return str;
+    }
+
+    public void SetClear()
+    {
+        m_isClear = true;
     }
 }

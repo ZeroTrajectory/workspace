@@ -73,6 +73,12 @@ public class QuestionPanel : MonoBehaviour
     {
         if(isTrue)
         {
+            for(int i = 0; i < m_answerList.Count; i++)
+            {
+                m_answerList[i].SetClear();
+            }
+            var config = ConfigMgr.GetInstance().GetQuestionConfig(m_curQuestIndex);
+            m_txtDesc.text = string.Format(config.question,config.trueAnswer);
             m_traAnswerRoot.GetComponent<CanvasGroup>().DOFade(0,2f);
             DOVirtual.DelayedCall(2f,() =>
             {
